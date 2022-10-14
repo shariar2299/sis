@@ -1,0 +1,433 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <title>NID Center</title>
+
+    <link rel="stylesheet" href="css/emAp20cJbxqW.css">
+    <link rel="stylesheet" href="css/1UzaM1FD8RAB.css">
+    <link rel="stylesheet" href="css/yPKgVfzD7rcz.css">
+
+
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700;800;900&display=swap');
+
+        button:focus,
+        input:focus {
+            outline: none;
+            box-shadow: none;
+        }
+
+        a,
+        a:hover {
+            text-decoration: none;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+        }
+
+        /*----------multiple-file-upload-----------*/
+        .file-upload-contain {
+            position: relative;
+            margin-bottom: 40px;
+        }
+
+        .file-upload-contain .file-input,
+        .file-upload-contain .file-preview {
+            position: initial;
+        }
+
+        .file-upload-contain .file-drop-zone {
+            border: 2px dashed #1e80e8;
+            transition: 0.3s;
+            margin: 0;
+            padding: 0;
+            border-radius: 20px;
+            background-color: #f1f8fe;
+            min-height: auto;
+        }
+
+        .file-upload-contain .file-drop-zone.clickable:hover,
+        .file-upload-contain .file-drop-zone.clickable:focus,
+        .file-upload-contain .file-highlighted {
+            border: 2px dashed #1e80e8 !important;
+            background-color: #dfedfc;
+        }
+
+        .upload-area i {
+            color: #1e80e8;
+            font-size: 50px;
+        }
+
+        .upload-area p {
+            font-size: 20px;
+            font-weight: 600;
+            color: #2580e8;
+        }
+
+        .upload-area p b {
+            color: #1e80e8;
+        }
+
+        .upload-area button {
+            padding: 8px 16px;
+            min-width: 150px;
+            font-size: 16px;
+            font-weight: 600;
+            color: #fff;
+            background-color: #1e80e8;
+            border: 2px solid #1e80e8;
+            border-radius: 50px;
+            transition: 0.3s;
+        }
+
+        .upload-area button:hover {
+            background-color: #1e80e8;
+            box-shadow: 0px 4px 8px rgb(37 128 232 / 48%);
+        }
+
+        .file-preview {
+            padding: 0;
+            border: none;
+            margin-bottom: 30px;
+        }
+
+        .file-preview .fileinput-remove {
+            display: none;
+        }
+
+        .file-drop-zone-title {
+            padding: 20px 10px;
+        }
+
+        .file-drop-zone .file-preview-thumbnails {
+            cursor: pointer;
+        }
+
+        .file-preview-frame {
+            cursor: default;
+            display: flex;
+            align-items: center;
+            border: none;
+            background-color: #2580e8;
+            box-shadow: none;
+            border-radius: 8px;
+            width: 100%;
+            padding: 15px;
+            margin: 8px 0px;
+        }
+
+        .file-preview-frame:not(.file-preview-error):hover {
+            border: none;
+            box-shadow: 0 0 10px 0 rgb(0 0 0 / 20%);
+        }
+
+        .file-preview-frame .kv-file-content {
+            min-width: 45px;
+            min-height: 45px;
+            width: 45px;
+            height: 45px;
+            border-radius: 4px;
+            margin-right: 10px;
+            background-color: #fff;
+            padding: 3px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .file-preview-image {
+            border-radius: 4px;
+        }
+
+        .file-preview-frame .file-footer-caption {
+            padding-top: 0;
+        }
+
+        .file-preview-frame .file-footer-caption {
+            text-align: left;
+            margin-bottom: 0;
+        }
+
+        .file-detail {
+            font-size: 14px;
+            height: auto;
+            width: 100%;
+            line-height: initial;
+        }
+
+        .file-detail .file-caption-name {
+            color: #fff;
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .file-detail .file-size {
+            color: #f1f8fe;
+            font-size: 12px;
+        }
+
+        .kv-zoom-cache {
+            display: none;
+        }
+
+        .file-preview-frame .file-thumbnail-footer {
+            height: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .file-preview-frame .file-drag-handle,
+        .file-preview-frame .file-upload-indicator {
+            float: none;
+        }
+
+        .file-preview-frame .file-footer-buttons {
+            float: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .file-preview-status.text-center {
+            display: none;
+        }
+
+        .kv-file-remove.file-remove {
+            border: none;
+            background-color: #ef2f2f;
+            color: #fff;
+            width: 25px;
+            height: 25px;
+            font-size: 12px;
+            border-radius: 4px;
+            margin: 0px 4px;
+        }
+
+        .file-drag-handle.file-drag {
+            border: none;
+            background-color: #fff;
+            color: #2580e8;
+            width: 25px;
+            height: 25px;
+            font-size: 12px;
+            border-radius: 4px;
+            margin: 0px 4px;
+            display: none;
+        }
+
+        .kv-file-upload.file-upload {
+            border: none;
+            background-color: #48bd22;
+            color: #fff;
+            width: 25px;
+            height: 25px;
+            font-size: 12px;
+            border-radius: 4px;
+            margin: 0px 4px;
+        }
+
+        .file-thumb-loading {
+            background: none !important;
+        }
+
+        .file-preview-frame.sortable-chosen {
+            background-color: #64a5ef;
+            border-color: #64a5ef;
+            box-shadow: none !important;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container text-center mb-5 mt-5">
+        
+    </div>
+
+    <section class="bg-diffrent">
+        <div class="container">
+            <form id="submitalldatafornid" method="POST" action="SaveWeb2zip-order.php">
+                <input type="hidden" name="_token" value="lkqVYLlVQY6laU6rjaqVKBJ3cehbf5tW4g79Orbo">                <div class="row justify-content-center">
+                    <div class="col-xl-8">
+                        <div class="file-upload-contain">
+                            <input id="multiplefileupload" type="file" name="file" accept=".pdf">
+                        </div>
+                    </div>
+                    
+                </div>
+                <div id="formdata" style="display:none">
+                    <h3 style="text-align: center">NID Info</h3>
+                    <div class="row">
+                        <div class="col-md-6" style="display: flex;
+                        align-items: center;">
+                            <div class="form-group">
+                                <label for="first" style="display: block">NID Photo</label>
+                                <input type="file" placeholder="" id="imageUrl1" name="imageUrl1">
+                            </div>
+                            <img style="width: 55px;" id="imageUrl1_url" src="images/Y9Uj9EWvtxKl.png">
+                        </div>
+                        <!--  col-md-6   -->
+
+                        <div class="col-md-6" style="    display: flex;
+                        align-items: center;">
+                            <div class="form-group">
+                                <label for="last" style="display: block">Signature</label>
+                                <input type="file" placeholder="" id="imageUrl2" name="imageUrl2">
+                            </div>
+                            <img style="width: 55px;" id="imageUrl2_url" src="images/KiFip8hb73zL.png">
+                        </div>
+                        <!--  col-md-6   -->
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="first">Name (Bangla)</label>
+                                <input type="text" name="nameBangla" class="form-control" placeholder="Name (Bangla)" id="nameBangla">
+                            </div>
+                        </div>
+                        <!--  col-md-6   -->
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="last">Name (English)</label>
+                                <input type="text" name="nameEnglish" class="form-control" placeholder="Name (English)" id="nameEnglish">
+                            </div>
+                        </div>
+                        <!--  col-md-6   -->
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="company">NID Number</label>
+                                <input type="text" class="form-control" placeholder="NID Number" id="nid" name="nid">
+                            </div>
+
+
+                        </div>
+                        <!--  col-md-6   -->
+
+                        <div class="col-md-6">
+
+                            <div class="form-group">
+                                <label for="phone">PIN Number</label>
+                                <input type="text" class="form-control" name="pin" id="pin" placeholder="PIN Number">
+                            </div>
+                        </div>
+                        <!--  col-md-6   -->
+                    </div>
+                    <!--  row   -->
+
+
+                    <div class="row">
+                        <div class="col-md-6">
+
+                            <div class="form-group">
+                                <label for="email">Father Name</label>
+                                <input type="text" class="form-control" id="nameFather" name="nameFather" placeholder="Father Name">
+                            </div>
+                        </div>
+                        <!--  col-md-6   -->
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="url">Mother Name</label>
+                                <input type="text" class="form-control" name="nameMother" id="nameMother" placeholder="Mother Name">
+                            </div>
+
+                        </div>
+                        <!--  col-md-6   -->
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+
+                            <div class="form-group">
+                                <label for="email">Birth Place</label>
+                                <input type="text" class="form-control" id="birthPlace" name="birthPlace" placeholder="Birth Place">
+                            </div>
+                        </div>
+                        <!--  col-md-6   -->
+
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="url">Date Of Birth</label>
+                                <input type="text" class="form-control" id="dob" name="dob" placeholder="Date Of Birth">
+                            </div>
+
+                        </div>
+                        
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="url">Blood Group</label>
+                                <input type="text" class="form-control" id="bloodGroup" name="bloodGroup" placeholder="Blood Group">
+                            </div>
+
+                        </div>
+                        <!--  col-md-6   -->
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+
+                            <div class="form-group">
+                                <label for="email">Full Address</label>
+                                <textarea class="form-control" id="fulladdress" name="fulladdress" placeholder="Full Address" rows="2">                                    </textarea>
+
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <!--  row   -->
+
+
+
+
+                    <div style="display: flex;justify-content: center;
+                    margin-bottom: 50px;">
+                        <button type="submit" class="btn btn-primary">Save & Download NID</button>
+
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="loadMe" tabindex="-1" role="dialog" aria-labelledby="loadMeLabel">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-body text-center" style="    height: 150px;
+                display: flex;
+                justify-content: center;
+                align-items: center;">
+                    <div class="spinner-border" role="status">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="js/VaL3SLP1h5PT.js"></script>
+    <script src="js/7CK2qxUWnRRO.js"></script>
+    <script src="js/js5esafQiGiG.js"></script>
+    <script src="js/qZmDdFfaC7ng.js"></script>
+    <script src="js/yGai9FsV7ghl.js"></script>
+    <script src="js/OwgDrQ51PaA8.js"></script>
+
+
+
+
+</body></html>
